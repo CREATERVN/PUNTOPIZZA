@@ -5,84 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Punto Pizza Ica</title>
 
+<!-- TIPOGRAFÍA PRO -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family: 'Segoe UI', Arial;
+  font-family:'Poppins', sans-serif;
   background:#0d0d0d;
   color:white;
 }
 
-/* HEADER */
-header{
+/* HEADER PRO */
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
   display:flex;
   justify-content:space-between;
-  padding:20px;
-  background:black;
-  border-bottom:2px solid red;
+  align-items:center;
+  padding:15px 40px;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,0,0,0.3);
 }
 
 .logo{
-  font-size:24px;
-  font-weight:bold;
+  display:flex;
+  align-items:center;
+  font-size:22px;
+  font-weight:600;
 }
-.logo span{color:red;}
 
+.logo .icon{
+  font-size:26px;
+  margin-right:8px;
+}
+
+.logo b{
+  color:#ff2b2b;
+}
+
+/* NAV */
 nav a{
+  position:relative;
   color:white;
-  margin:10px;
+  margin-left:25px;
   text-decoration:none;
-  font-weight:bold;
+  font-weight:500;
+  transition:0.3s;
 }
-nav a:hover{color:red;}
 
-/* HERO MEJORADO */
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-5px;
+  width:0%;
+  height:2px;
+  background:red;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#ff2b2b;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+/* HERO PRO */
 .hero{
-  background:url("local-1.jpg") center/cover;
+  background:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url("local-1.jpg") center/cover;
   height:500px;
   display:flex;
   align-items:center;
   padding:60px;
-  position:relative;
-}
-
-/* overlay oscuro */
-.hero::before{
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.6);
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
 }
 
 .hero h1{
-  font-size:55px;
-  text-shadow:2px 2px 10px black;
+  font-size:60px;
 }
-.hero span{color:red;}
+
+.hero span{color:#ff2b2b;}
+
+.hero p{
+  margin-top:10px;
+  font-size:18px;
+}
 
 .btn{
   display:inline-block;
-  margin-top:20px;
-  padding:12px 25px;
-  background:red;
+  margin-top:25px;
+  padding:14px 30px;
+  background:#ff2b2b;
   color:white;
   text-decoration:none;
-  border-radius:5px;
+  border-radius:6px;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#ff0000;
+  transform:scale(1.05);
 }
 
 /* SECCIONES */
 .section{
-  padding:60px 40px;
+  padding:70px 40px;
   text-align:center;
 }
 
+.section h2{
+  margin-bottom:30px;
+  font-size:30px;
+}
+
+/* CARDS */
 .cards{
   display:flex;
   flex-wrap:wrap;
@@ -99,7 +140,8 @@ nav a:hover{color:red;}
 }
 
 .card:hover{
-  transform:scale(1.05);
+  transform:translateY(-8px);
+  box-shadow:0 10px 25px rgba(255,0,0,0.2);
 }
 
 .card img{
@@ -127,7 +169,7 @@ nav a:hover{color:red;}
   position:fixed;
   top:0; left:0;
   width:100%; height:100%;
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0,0.95);
   justify-content:center;
   align-items:center;
 }
@@ -135,33 +177,45 @@ nav a:hover{color:red;}
 .lightbox img{
   max-width:90%;
   max-height:90%;
+  border-radius:10px;
 }
 
 /* FOOTER */
 footer{
   background:black;
-  padding:20px;
+  padding:25px;
   text-align:center;
+  margin-top:40px;
 }
 
-/* WHATSAPP */
+/* WHATSAPP PRO */
 .whatsapp{
   position:fixed;
   bottom:20px;
   right:20px;
-  background:green;
+  background:#25D366;
   padding:15px;
   border-radius:50%;
+  font-size:22px;
   text-decoration:none;
-  font-size:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  transition:0.3s;
+}
+
+.whatsapp:hover{
+  transform:scale(1.1);
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="logo">🍕 Punto <span>Pizza</span></div>
+<header class="header">
+<div class="logo">
+<span class="icon">🍕</span>
+<span>Punto <b>Pizza</b></span>
+</div>
+
 <nav>
 <a href="#">Inicio</a>
 <a href="#locales">Locales</a>
@@ -170,16 +224,14 @@ footer{
 </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-<div class="hero-content">
+<div>
 <h1>La mejor <span>pizza</span> de Ica</h1>
 <p>Calidad, sabor y delivery rápido</p>
-<a class="btn" href="https://wa.me/51979104910">Pedir ahora</a>
+<a class="btn" href="https://wa.me/51979104910?text=Hola%20quiero%20hacer%20un%20pedido">Pedir ahora</a>
 </div>
 </section>
 
-<!-- LOCALES -->
 <section id="locales" class="section">
 <h2>Nuestras Sucursales</h2>
 
@@ -187,13 +239,12 @@ footer{
 <div class="card">
 <img src="local-1.jpg" onclick="openImg(this.src)">
 <h3>Todos nuestros locales</h3>
-<p>Presencia en distintos puntos de Ica</p>
+<p>Encuéntranos en distintos puntos de Ica</p>
 </div>
 </div>
 
 </section>
 
-<!-- PROMOCIONES -->
 <section id="promos" class="section galeria">
 <h2>Promociones</h2>
 
@@ -205,7 +256,6 @@ footer{
 
 </section>
 
-<!-- UBICACIÓN -->
 <section class="section">
 <h2>Ubicación</h2>
 
@@ -216,7 +266,6 @@ width="100%" height="300">
 
 </section>
 
-<!-- CONTACTO -->
 <section id="contacto" class="section">
 <h2>Contacto</h2>
 <p>📞 979 104 910</p>
@@ -227,7 +276,7 @@ width="100%" height="300">
 © 2026 Punto Pizza Ica
 </footer>
 
-<a class="whatsapp" href="https://wa.me/51979104910">💬</a>
+<a class="whatsapp" href="https://wa.me/51979104910?text=Hola%20quiero%20hacer%20un%20pedido">💬</a>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
